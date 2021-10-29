@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ins-admission-backend-preprod
+  labels:
+    app: admissionbackend
+spec:
+  type: ClusterIP
+  selector:
+    app: admissionbackend
+    tier: ins1
+  ports:
+  - port: 5004
+    targetPort: 5000
+

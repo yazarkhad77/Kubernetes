@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ins-search-backend-preprod
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    app: searchbackend
+    tier: ins4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: searchbackend
+      tier: ins4
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        app: searchbackend
+        tier: ins4
+    spec:
+      containers:
+        - image: gcr.io/inscholaris-303015/ins-search-backend-preprod:latest
+          name: ins-search-backend-preprod
+          ports:
+            - containerPort: 9085
+          resources: {}
+      restartPolicy: Always
+status: {}
+

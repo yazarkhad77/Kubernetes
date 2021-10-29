@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: admission
+  name: ins-admission-service-backend-prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: admission
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: admission
+    spec:
+      containers:
+        - image: gcr.io/inscholaris-303015/ins-admission-service-backend-prod:latest
+          name: ins-admission-service-backend-prod
+          ports:
+            - containerPort: 5000
+          resources: {}
+      restartPolicy: Always
+status: {}
+

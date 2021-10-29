@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ins-ums-backend-preprod
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    app: umsbackend
+    tier: ins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: umsbackend
+      tier: ins
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        app: umsbackend
+        tier: ins
+    spec:
+      containers:
+        - image: gcr.io/inscholaris-303015/ins-ums-backend-preprod:latest
+          name: ins-ums-backend-preprod
+          ports:
+            - containerPort: 5000
+          resources: {}
+      restartPolicy: Always
+status: {}
+

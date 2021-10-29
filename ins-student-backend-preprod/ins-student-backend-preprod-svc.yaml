@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ins-student-backend-preprod
+  labels:
+    app: studentbackend
+spec:
+  type: ClusterIP
+  selector:
+    app: studentbackend
+    tier: ins5
+  ports:
+  - port: 5002
+    targetPort: 5000

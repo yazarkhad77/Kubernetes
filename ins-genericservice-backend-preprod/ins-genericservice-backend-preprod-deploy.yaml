@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ins-generic-backend-preprod
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    app: genericbackend
+    tier: ins6
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: genericbackend
+      tier: ins6
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        app: genericbackend
+        tier: ins6
+    spec:
+      containers:
+        - image: gcr.io/inscholaris-303015/ins-genericservice-backend-preprod:latest
+          name: ins-genericservice-backend-preprod
+          ports:
+            - containerPort: 5000
+          resources: {}
+      restartPolicy: Always
+status: {}

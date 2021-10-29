@@ -1,0 +1,16 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nginx-ingress-nginx-ingress-controller
+  namespace: default
+data:
+  use-forwarded-headers: "true"
+  use-proxy-protocol: "true"
+  proxy_set_header: X-Forwarded-Prefix /infra/;
+ # real-ip-header: X-Forwared-For
+ # real-ip-recursive: "true"
+  #ingress-template: |
+    # the whole template is inserted here and proxy_set_header X-Forwarded-Proto is updated
+ #       . . .
+   #     proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
+#        . . .

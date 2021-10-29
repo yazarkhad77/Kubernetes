@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloweb
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    app: hello
+    tier: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello
+      tier: web
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        app: hello
+        tier: web
+    spec:
+      containers:
+        - image: gcr.io/inscholaris-303015/ins-student-backend-preprod:latest
+          name: ins-student-backend-preprod
+          ports:
+            - containerPort: 5000
+          resources: {}
+      restartPolicy: Always
+status: {}
+

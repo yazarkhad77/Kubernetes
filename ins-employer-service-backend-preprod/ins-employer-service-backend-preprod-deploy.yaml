@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ins-employer-backend-preprod
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    app: employerbackend
+    tier: ins2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: employerbackend
+      tier: ins2
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        app: employerbackend
+        tier: ins2
+    spec:
+      containers:
+        - image: gcr.io/inscholaris-303015/ins-employer-service-backend-preprod:latest
+          name: ins-employer-backend-preprod
+          ports:
+            - containerPort: 5000
+          resources: {}
+      restartPolicy: Always
+status: {}
+

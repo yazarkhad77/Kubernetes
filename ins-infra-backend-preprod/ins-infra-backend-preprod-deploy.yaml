@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ins-infra-backend-preprod
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    app: infrabackend
+    tier: ins3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: infrabackend
+      tier: ins3
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        app: infrabackend
+        tier: ins3
+    spec:
+      containers:
+        - image: gcr.io/inscholaris-303015/ins-infra-backend-preprod:latest
+          name: ins-infra-backend-preprod
+          ports:
+            - containerPort: 9082
+          resources: {}
+      restartPolicy: Always
+status: {}
+
+
